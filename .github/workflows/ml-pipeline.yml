@@ -1,0 +1,53 @@
+name: Car Price ML Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  ml-pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      # ── Step 1: Checkout ────────────────────────────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ── Step 2: Set up Python ───────────────────────────────────────────────
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # ── Step 3: Install dependencies ────────────────────────────────────────
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # ── Step 4: Validate dataset, train baseline & candidate, quality gate ──
+      - name: Train and evaluate model
+        run: python train.py
+
+      # ── Step 5: Run application tests ───────────────────────────────────────
+      - name: Run application tests
+        run: pytest test_app.py -v
+
+      # ── Step 6: Publish model package (only if all above pass) ──────────────
+      - name: Build model package
+        run: |
+          mkdir -p model_package
+          cp model/model.pkl      model_package/
+          cp model/metrics.json   model_package/
+          cp predict.py           model_package/
+          cp requirements.txt     model_package/
+          echo "Run: ${{ github.run_number }}  Commit: ${{ github.sha }}" \
+               > model_package/package_info.txt
+
+      - name: Upload model package artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: car-price-model-run${{ github.run_number }}-${{ github.sha }}
+          path: model_package/
+          retention-days: 30

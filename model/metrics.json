@@ -1,0 +1,9 @@
+{
+  "baseline_mae": 8262.03,
+  "model_mae": 1808.57,
+  "margin": 500.0,
+  "required_max_mae": 7762.03,
+  "gate_passed": true,
+  "train_size": 160,
+  "val_size": 41
+}
