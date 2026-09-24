@@ -180,7 +180,7 @@ In `.github/workflows/ml-pipeline.yml`, temporarily change `python train.py` →
 **Which check prevented publication:**  
 The quality gate in the training step exits with `sys.exit(1)`, causing the workflow to fail before the artifact upload step runs.
 
-🔴 **Failed run A link:** *(add link here after pushing)*
+🔴 **Failed run A link:** *(https://github.com/Kowsya/car_price_prediction/actions/runs/35987138507)
 
 ---
 
@@ -195,7 +195,7 @@ In `.github/workflows/ml-pipeline.yml`, temporarily change `pytest test_app.py` 
 **Which check prevented publication:**  
 The pytest step exits with a non-zero code, and the artifact upload step — which has no `if: always()` — does not run.
 
-🔴 **Failed run B link:** *(add link here after pushing)*
+🔴 **Failed run B link:** (https://github.com/Kowsya/car_price_prediction/actions/runs/35988120919)
 
 ---
 
