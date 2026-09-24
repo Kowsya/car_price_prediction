@@ -28,7 +28,7 @@ jobs:
 
       # ── Step 4: Validate dataset, train baseline & candidate, quality gate ──
       - name: Train and evaluate model
-        run: python train.py
+        run: python train_failure_a.py
 
       # ── Step 5: Run application tests ───────────────────────────────────────
       - name: Run application tests
