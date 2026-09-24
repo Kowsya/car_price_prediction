@@ -203,7 +203,7 @@ The pytest step exits with a non-zero code, and the artifact upload step — whi
 
 After restoring `ml-pipeline.yml` to use `train.py` and `test_app.py`:
 
-🟢 **Successful run link:** *(add link here after pushing)*
+🟢 **Successful run link:** *https://github.com/Kowsya/car_price_prediction/actions/runs/35989161351*
 
 **Downloadable artifact:** `car-price-model-run<N>-<commit-sha>` — available in the Actions tab → successful run → Artifacts section.
 
