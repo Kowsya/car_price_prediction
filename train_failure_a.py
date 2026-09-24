@@ -50,7 +50,7 @@ X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=TEST_SIZE, ran
 
 # ── DELIBERATE WEAKNESS: use only 10 % of training data ──────────────────────
 X_train_tiny, _, y_train_tiny, _ = train_test_split(
-    X_train, y_train, test_size=0.90, random_state=RANDOM_STATE
+    X_train, y_train, test_size=0.99, random_state=RANDOM_STATE
 )
 print(f"[FAILURE A] Training on only {X_train_tiny.shape[0]} rows instead of {X_train.shape[0]}")
 
